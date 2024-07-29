@@ -10,21 +10,44 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Category {
-  id           String        @id @default(cuid())
-  title        String
-  color        String?
-  amount       Float
+model User {
+  id           String        @id @default(uuid())
+  clerkUserId  String        @unique
+  email        String        @unique
+  name         String?
+  imageUrl     String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
   transactions Transaction[]
 }
 
 model Transaction {
-  id         String   @id @default(cuid())
-  type       String
-  amount     Float
-  Category   Category @relation(fields: [categoryId], references: [id])
-  categoryId String
-  published  Boolean? @default(false)
-  updatedAt  DateTime @updatedAt
-  createdAt  DateTime @default(now())
+  id        String   @id @default(uuid())
+  text      String
+  amount    Float
+  // Relation to user
+  userId    String
+  user      User     @relation(fields: [userId], references: [clerkUserId], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }
+
+// model Category {
+//   id           String        @id @default(cuid())
+//   title        String
+//   color        String?
+//   amount       Float
+//   transactions Transaction[]
+// }
+
+// model Transaction {
+//   id         String   @id @default(cuid())
+//   type       String
+//   amount     Float
+//   Category   Category @relation(fields: [categoryId], references: [id])
+//   categoryId String
+//   published  Boolean? @default(false)
+//   updatedAt  DateTime @updatedAt
+//   createdAt  DateTime @default(now())
+// }
