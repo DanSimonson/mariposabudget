@@ -8,6 +8,7 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import MainMenu from "@/components/MainMenu";
 import "./globals.css";
 
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
@@ -26,13 +27,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={roboto.className}>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-          {children}
+          <MainMenu />
+          <main className="border border-orange-500 flex flex-col items-center justify-center my-8 mx-auto w-[350px]">
+            {children}
+          </main>
         </body>
       </html>
     </ClerkProvider>
