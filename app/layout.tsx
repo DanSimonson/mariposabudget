@@ -24,7 +24,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={roboto.className}>
           <MainMenu />
-          <main className="border border-orange-500 flex flex-col items-center justify-center my-8 mx-auto w-[350px]">
+          <main className="border border-orange-500 flex flex-col items-center justify-center my-8 mx-auto w-full md:w-2/3 ">
             {children}
           </main>
           <ToastContainer />
