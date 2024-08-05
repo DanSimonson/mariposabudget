@@ -4,7 +4,7 @@ import { currentUser } from "@clerk/nextjs/server";
 // import AddTransaction from "@/components/AddTransaction";
 import Balance from "@/components/Balance";
 import TrackIncomeExpense from "@/components/TrackIncomeExpense";
-// import TransactionList from "@/components/TransactionList";
+import TransactionList from "@/components/TransactionList";
 import { Transaction } from "@/components/Transaction";
 
 export default async function Home() {
@@ -26,6 +26,7 @@ export default async function Home() {
       <Transaction />
       <Balance />
       <TrackIncomeExpense />
+      <TransactionList />
     </>
   );
 }

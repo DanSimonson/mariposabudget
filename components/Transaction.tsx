@@ -83,7 +83,7 @@ export const Transaction = () => {
                 type="text"
                 id="text"
                 name="text"
-                placeholder="Enter text..."
+                placeholder="Enter description..."
                 className="border border-black rounded-md py-2"
               />
               <input

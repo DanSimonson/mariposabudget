@@ -31,20 +31,20 @@ const TransactionItem = ({ transaction }: { transaction: Transaction }) => {
     <li
       className={
         transaction.amount < 0
-          ? "border-r-4 border-red-500 border-solid bg-white shadow text-gray-950 flex justify-around w-[167px]"
-          : "border-r-4 border-green-500 border-solid bg-white shadow text-gray-950 flex justify-around w-[167px]"
+          ? "border-r-4 border-red-500 border-solid shadow text-gray-950 w-full bg-white flex items-center justify-center"
+          : "border-r-4 border-green-500 border-solid bg-white shadow text-gray-950 flex items-center justify-center "
       }
     >
       {transaction.text}
       <span>
-        &nbsp;&nbsp;{sign}&nbsp;&nbsp;
+        {sign}
         {addCommas(Math.abs(transaction.amount))}
       </span>
       <button
         className="cursor-pointer text-black text-xl "
         onClick={() => handleDelete(transaction.id)}
       >
-        X
+        Delete
       </button>
     </li>
   );
