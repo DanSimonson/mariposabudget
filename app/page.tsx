@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Guest from "@/components/Guest";
 import { currentUser } from "@clerk/nextjs/server";
-// import AddTransaction from "@/components/AddTransaction";
 import Balance from "@/components/Balance";
 import TrackIncomeExpense from "@/components/TrackIncomeExpense";
 import TransactionList from "@/components/TransactionList";

@@ -31,13 +31,13 @@ export const Transaction = () => {
           </Button>
         </div>
       </div>
-      <div className="border border-cyan-500 grid gap-4 w-full">
+      <div className="border grid gap-4 w-full">
         <div className=" grid gap-2">
           <Label className="text-center py-4" htmlFor="transaction">
             Add Transaction
           </Label>
           <form
-            className="border border-green-500 "
+            className="border-b border-r border-l "
             ref={formRef}
             action={clientAction}
           >

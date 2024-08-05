@@ -17,10 +17,6 @@ interface TransactionOutcome {
 const handleTransaction = async (
   formData: FormData
 ): Promise<TransactionOutcome> => {
-  //console.log("handle server action");
-  //console.log("formData.get: ", formData.get("type"));
-  // console.log("formData.get: ", formData.get("amount"));
-  // console.log("formData.get: ", formData.get("text"));
   const textValue = formData.get("text");
   const amountValue = formData.get("amount");
   const typeValue = formData.get("type");
