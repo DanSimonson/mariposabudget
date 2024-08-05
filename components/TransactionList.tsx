@@ -35,7 +35,7 @@ const TransactionList = async () => {
               <TableRow key={t.userId}>
                 <TableCell>{t.text}</TableCell>
                 <TableCell className="text-right">
-                  -${Math.abs(t.amount).toFixed(2)}
+                  ${Math.abs(t.amount).toFixed(2)}
                 </TableCell>
               </TableRow>
             ))}

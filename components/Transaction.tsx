@@ -1,59 +1,22 @@
 "use client";
-//import { useRef } from "react";
-//import addTransaction from "@/app/addTransaction";
-import { useState, useRef, JSX, SVGProps } from "react";
-import createTransaction from "@/app/actions/createTransaction";
+
+import { useRef, JSX, SVGProps } from "react";
 import handleTransaction from "@/app/actions/handleTransaction";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 export const Transaction = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const [newTransaction, setNewTransaction] = useState({
-    name: "",
-    amount: 0,
-    type: "expense",
-  });
 
-  const [transactions, setTransactions] = useState([
-    { id: 1, name: "Rent", amount: -1200, type: "expense" },
-    { id: 2, name: "Salary", amount: 3500, type: "income" },
-    { id: 3, name: "Groceries", amount: -250, type: "expense" },
-    { id: 4, name: "Utilities", amount: -150, type: "expense" },
-  ]);
-
-  //   const handleInputChange = (e: any) => {
-  //     setNewTransaction({ ...newTransaction, [e.target.name]: e.target.value });
-  //   };
-
-  //   const handleAddTransaction = () => {
-  //     if (newTransaction.name.trim() !== "" && newTransaction.amount !== 0) {
-  //       setTransactions([
-  //         ...transactions,
-  //         { ...newTransaction, id: transactions.length + 1 },
-  //       ]);
-  //       setNewTransaction({ name: "", amount: 0, type: "expense" });
-  //     }
-  //   };
   const clientAction = async (formData: FormData) => {
-    const formRef = useRef<HTMLFormElement>(null);
-    //console.log("formData: ", formData);
-    //const { data, error } = await createTransaction(formData);
-    // if (error) {
-    //   toast.error(error);
-    // } else {
-    //   toast.success("Transaction Created");
-    //   formRef.current?.reset();
-    // }
+    const { data, error } = await handleTransaction(formData);
+    if (error) {
+      toast.error(error);
+    } else {
+      toast.success("Transaction Created");
+      formRef.current?.reset();
+    }
   };
 
   return (
@@ -76,7 +39,7 @@ export const Transaction = () => {
           <form
             className="border border-green-500 "
             ref={formRef}
-            action={handleTransaction}
+            action={clientAction}
           >
             <div className="flex flex-col md:flex-row md:justify-around items-center gap-2">
               <input
