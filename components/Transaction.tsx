@@ -101,7 +101,7 @@ export const Transaction = () => {
                 required
               >
                 <option value="expense">Expense</option>
-                <option value="amount">Amount</option>
+                <option value="income">Income</option>
               </select>
               <button
                 className="cursor-pointer bg-black text-white 
