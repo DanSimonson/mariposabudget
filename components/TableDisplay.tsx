@@ -25,7 +25,6 @@ type TransactionData = {
 
 function TableDisplay(props: TransactionData) {
   const { transactions, error } = props;
-  console.log("transactions: ", transactions);
 
   if (error) {
     return <p className="error">{error}</p>;
@@ -60,9 +59,15 @@ function TableDisplay(props: TransactionData) {
           transactions.map((t: any, index: Key | null | undefined) => (
             <TableRow key={index}>
               <TableCell>{t.text}</TableCell>
-              <TableCell className="text-right">
-                ${Math.abs(t.amount).toFixed(2)}
-              </TableCell>
+              {t.amount > 0 ? (
+                <TableCell className="text-right text-green-500">
+                  ${Math.abs(t.amount).toFixed(2)}
+                </TableCell>
+              ) : (
+                <TableCell className="text-right text-red-500">
+                  ${Math.abs(t.amount).toFixed(2)}
+                </TableCell>
+              )}
               <TableCell
                 onClick={() => handleDelete(t.id)}
                 className="text-right cursor-pointer"
