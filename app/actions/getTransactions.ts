@@ -1,11 +1,10 @@
 "use server";
 
 import prisma from "@/lib/db";
-import { Transaction } from "@/types/Transaction";
 import { auth } from "@clerk/nextjs/server";
 
 async function getTransactions(): Promise<{
-  transactions?: Transaction[];
+  transactions?: any;
   error?: string;
 }> {
   const { userId } = auth();

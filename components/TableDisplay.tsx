@@ -11,9 +11,8 @@ import {
 import deleteTransaction from "@/app/actions/deleteTransaction";
 import { toast } from "react-toastify";
 import { Key } from "react";
-import { Transaction } from "@/types/Transaction";
 
-function TableDisplay(props: { transactions: Transaction; error: string }) {
+function TableDisplay(props: { transactions: any; error: any }) {
   const { transactions, error } = props;
 
   if (error) {
