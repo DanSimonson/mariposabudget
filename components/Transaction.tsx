@@ -24,7 +24,7 @@ export const Transaction = () => {
       <div className="bg-primary rounded-lg border p-6 w-full max-w-md flex flex-col gap-6">
         <div className="flex items-center justify-between">
           <h1 className="text-sm mr-2 md:text-2xl md:mr-0 font-bold">
-            Budget App
+            Budget Tracker
           </h1>
           <ToggleMode />
         </div>
