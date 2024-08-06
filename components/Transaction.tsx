@@ -3,7 +3,6 @@
 import { useRef, JSX, SVGProps } from "react";
 import handleTransaction from "@/app/actions/handleTransaction";
 import { toast } from "react-toastify";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import ToggleMode from "./ToggleMode";
 export const Transaction = () => {
