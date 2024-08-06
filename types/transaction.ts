@@ -1,4 +1,5 @@
 export interface Transaction {
+  map: any;
   id: String;
   text: string;
   amount: number;

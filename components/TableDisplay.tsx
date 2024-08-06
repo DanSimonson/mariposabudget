@@ -3,34 +3,24 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import deleteTransaction from "@/app/actions/deleteTransaction";
 import { toast } from "react-toastify";
 import { Key } from "react";
+import { Transaction } from "@/types/Transaction";
 
-type TransactionData = {
-  transactions: [];
-  text: string;
-  amount: number;
-  type: string;
-  id: string;
-  error?: string;
-};
-
-function TableDisplay(props: TransactionData) {
+function TableDisplay(props: { transactions: Transaction; error: string }) {
   const { transactions, error } = props;
 
   if (error) {
     return <p className="error">{error}</p>;
   }
 
-  const handleDelete = async (transactionId: TransactionData) => {
+  const handleDelete = async (transactionId: any) => {
     const confirmed = window.confirm(
       "Are you sure you want to delete this transaction"
     );
@@ -48,7 +38,7 @@ function TableDisplay(props: TransactionData) {
   return (
     <Table>
       <TableHeader>
-        <TableRow>
+        <TableRow className="bg-secondary">
           <TableHead>Description</TableHead>
           <TableHead className="text-right">Amount</TableHead>
           <TableHead className="text-right">Delete</TableHead>
@@ -82,6 +72,7 @@ function TableDisplay(props: TransactionData) {
 }
 
 export default TableDisplay;
-function tyepof(amount: any): any {
-  throw new Error("Function not implemented.");
-}
+
+// function tyepof(amount: any): any {
+//   throw new Error("Function not implemented.");
+// }

@@ -5,7 +5,7 @@ import handleTransaction from "@/app/actions/handleTransaction";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-
+import ToggleMode from "./ToggleMode";
 export const Transaction = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -21,33 +21,28 @@ export const Transaction = () => {
 
   return (
     <>
-      <div className="bg-background rounded-lg border p-6 w-full max-w-md flex flex-col gap-6">
+      <div className="bg-primary rounded-lg border p-6 w-full max-w-md flex flex-col gap-6">
         <div className="flex items-center justify-between">
           <h1 className="text-sm mr-2 md:text-2xl md:mr-0 font-bold">
             Budget App
           </h1>
-          <Button variant="outline" size="icon">
-            <SettingsIcon className="w-5 h-5" />
-          </Button>
+          <ToggleMode />
         </div>
       </div>
-      <div className="border grid gap-4 w-full">
+      <div className=" grid gap-4 w-full">
         <div className=" grid gap-2">
-          <Label className="text-center py-4" htmlFor="transaction">
-            Add Transaction
-          </Label>
-          <form
-            className="border-b border-r border-l "
-            ref={formRef}
-            action={clientAction}
-          >
+          <Label
+            className="text-center py-4 text-2xl text-primary mt-7"
+            htmlFor="transaction"
+          ></Label>
+          <form className="" ref={formRef} action={clientAction}>
             <div className="flex flex-col md:flex-row md:justify-around items-center gap-2">
               <input
                 type="text"
                 id="text"
                 name="text"
                 placeholder="Enter description..."
-                className="border border-black rounded-md py-2"
+                className="border border-black rounded-md py-2 bg-input"
               />
               <input
                 type="number"
@@ -55,12 +50,12 @@ export const Transaction = () => {
                 id="amount"
                 placeholder="Enter amount..."
                 step="0.01"
-                className="border border-black rounded-md py-2"
+                className="border border-black rounded-md py-2 bg-input"
               />
               <select
                 id="type"
                 name="type"
-                className="border border-black rounded-md py-3 px-2"
+                className="border border-black rounded-md py-3 px-2 bg-input"
                 required
               >
                 <option value="expense">Expense</option>
@@ -68,7 +63,7 @@ export const Transaction = () => {
               </select>
               <button
                 className="cursor-pointer bg-black text-white 
-              rounded block text-base mt-4 mr-0 mb-3 py-3 w-1/3 max-w-80"
+              rounded-xl block text-base mt-4 mr-0 mb-3 py-3 w-1/3 max-w-80 bg-primary"
               >
                 Add
               </button>
