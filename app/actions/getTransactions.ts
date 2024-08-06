@@ -3,10 +3,7 @@
 import prisma from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 
-async function getTransactions(): Promise<{
-  transactions?: any;
-  error?: string;
-}> {
+async function getTransactions(transactions: any) {
   const { userId } = auth();
 
   if (!userId) {
