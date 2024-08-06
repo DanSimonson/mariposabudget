@@ -62,8 +62,8 @@ export const Transaction = () => {
                 <option value="income">Income</option>
               </select>
               <button
-                className="cursor-pointer bg-black text-white 
-              rounded-xl block text-base mt-4 mr-0 mb-3 py-3 w-1/3 max-w-80 bg-primary"
+                className="cursor-pointer bg-primary text-black font-bold dark:text-white text-lg
+              rounded-xl block mt-4 mr-0 mb-3 py-3 w-1/3 max-w-80 "
               >
                 Add
               </button>
