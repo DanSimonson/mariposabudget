@@ -5,6 +5,8 @@ import handleTransaction from "@/app/actions/handleTransaction";
 import { toast } from "react-toastify";
 import { Label } from "@/components/ui/label";
 import ToggleMode from "./ToggleMode";
+import { motion } from "framer-motion";
+
 export const Transaction = () => {
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -60,12 +62,14 @@ export const Transaction = () => {
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
               </select>
-              <button
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
                 className="cursor-pointer bg-primary text-black font-bold dark:text-white text-lg
               rounded-xl block mt-4 mr-0 mb-3 py-3 w-1/3 max-w-80 "
               >
                 Add
-              </button>
+              </motion.button>
             </div>
           </form>
         </div>

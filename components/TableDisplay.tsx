@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useEffect, useRef } from "react";
 import {
   Table,
   TableBody,
@@ -14,6 +15,7 @@ import { Key } from "react";
 
 function TableDisplay(props: { transactions: any; error: any }) {
   const { transactions, error } = props;
+  const tableCellRef = useRef(null);
 
   if (error) {
     return <p className="error">{error}</p>;
@@ -58,6 +60,7 @@ function TableDisplay(props: { transactions: any; error: any }) {
                 </TableCell>
               )}
               <TableCell
+                ref={tableCellRef}
                 onClick={() => handleDelete(t.id)}
                 className="text-right cursor-pointer"
               >
@@ -71,7 +74,3 @@ function TableDisplay(props: { transactions: any; error: any }) {
 }
 
 export default TableDisplay;
-
-// function tyepof(amount: any): any {
-//   throw new Error("Function not implemented.");
-// }
