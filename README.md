@@ -12,7 +12,8 @@
 
 ## App Info
 
-This is Dan Simonson's Budget Tracker, tracking income vs expenses and keeping a running balance.
+>This is Dan Simonson's Budget Tracker, tracking income vs expenses
+>and keeping a running balance.
 
 ### Author
 
