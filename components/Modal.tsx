@@ -6,9 +6,12 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import deleteTransaction from "@/app/actions/deleteTransaction";
 import { toast } from "react-toastify";
 
+const red = { background: "red" };
+const darkRed = { background: "#990000" };
+
 export function BudgetModal(props: any) {
   const [openModal, setOpenModal] = useState(false);
-
+  const [color, setColor] = useState(red);
   const { id } = props;
 
   const handleDelete = async (id: string) => {
@@ -23,7 +26,13 @@ export function BudgetModal(props: any) {
 
   return (
     <>
-      <Button className="" onClick={() => setOpenModal(true)}>
+      <Button
+        className="bg-primary text-primary-background font-semibold dark:text-white dark:bg-primary"
+        onClick={() => setOpenModal(true)}
+        onMouseEnter={() => setColor(darkRed)}
+        onMouseLeave={() => setColor(red)}
+        style={color}
+      >
         Delete
       </Button>
       <Modal
