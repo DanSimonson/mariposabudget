@@ -1,6 +1,3 @@
-"use client";
-
-import React, { useEffect, useRef } from "react";
 import {
   Table,
   TableBody,
@@ -9,40 +6,24 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import deleteTransaction from "@/app/actions/deleteTransaction";
-import { toast } from "react-toastify";
+import getTransactions from "@/app/actions/getTransactions";
 import { Key } from "react";
+import { BudgetModal } from "./Modal";
 
-function TableDisplay(props: { transactions: any; error: any }) {
-  const { transactions, error } = props;
-  const tableCellRef = useRef(null);
+async function TableDisplay() {
+  const { transactions, error } = await getTransactions();
 
   if (error) {
     return <p className="error">{error}</p>;
   }
 
-  const handleDelete = async (transactionId: any) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to delete this transaction"
-    );
-
-    if (!confirmed) return;
-
-    const { message, error } = await deleteTransaction(transactionId);
-
-    if (error) {
-      toast.error(error);
-    }
-
-    toast.success(message);
-  };
   return (
     <Table>
       <TableHeader>
         <TableRow className="bg-secondary">
           <TableHead>Description</TableHead>
           <TableHead className="text-right">Amount</TableHead>
-          <TableHead className="text-right">Delete</TableHead>
+          <TableHead className="text-right pr-7">Delete</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -59,12 +40,10 @@ function TableDisplay(props: { transactions: any; error: any }) {
                   ${Math.abs(t.amount).toFixed(2)}
                 </TableCell>
               )}
-              <TableCell
-                ref={tableCellRef}
-                onClick={() => handleDelete(t.id)}
-                className="text-right cursor-pointer"
-              >
-                Delete
+              <TableCell className="border border-red-500 text-right cursor-pointer">
+                <div className="border border-green-500 w-full flex justify-end m-0 p-0">
+                  <BudgetModal {...t} />
+                </div>
               </TableCell>
             </TableRow>
           ))}

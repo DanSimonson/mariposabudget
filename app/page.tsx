@@ -5,6 +5,8 @@ import Balance from "@/components/Balance";
 import TrackIncomeExpense from "@/components/TrackIncomeExpense";
 import TransactionList from "@/components/TransactionList";
 import { Transaction } from "@/components/Transaction";
+import { BudgetModal } from "@/components/Modal";
+import TableDisplay from "@/components/TableDisplay";
 
 export default async function Home() {
   const user = await currentUser();
