@@ -40,8 +40,8 @@ async function TableDisplay() {
                   ${Math.abs(t.amount).toFixed(2)}
                 </TableCell>
               )}
-              <TableCell className="border border-red-500 text-right cursor-pointer">
-                <div className="border border-green-500 w-full flex justify-end m-0 p-0">
+              <TableCell className="text-right cursor-pointer">
+                <div className="w-full flex justify-end m-0 p-0">
                   <BudgetModal {...t} />
                 </div>
               </TableCell>
