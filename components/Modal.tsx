@@ -6,8 +6,8 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import deleteTransaction from "@/app/actions/deleteTransaction";
 import { toast } from "react-toastify";
 
-const red = { background: "red" };
-const darkRed = { background: "#990000" };
+const red = { background: "#F44336" };
+const darkRed = { background: "#E53935" };
 
 export function BudgetModal(props: any) {
   const [openModal, setOpenModal] = useState(false);
