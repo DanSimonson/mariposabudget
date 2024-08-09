@@ -1,8 +1,8 @@
 export interface Transaction {
-  map: any;
+  map?: any;
   id: String;
-  text: string;
-  amount: number;
-  userId: string;
-  createdAt: Date;
+  text?: string;
+  amount?: number;
+  userId?: string;
+  createdAt?: Date;
 }

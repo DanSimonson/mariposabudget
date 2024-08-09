@@ -7,13 +7,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import deleteTransaction from "@/app/actions/deleteTransaction";
-import { toast } from "react-toastify";
 import { Key } from "react";
 import { BudgetModal } from "./Modal";
-import { Transaction } from "@/types/transaction";
-//import TableDisplay from "./TableDisplay";
 
+type t = {
+  id: string;
+  amount: number;
+  text: string;
+};
 const DisplayList = async () => {
   const { transactions, error } = await getTransactions();
 
@@ -22,7 +23,7 @@ const DisplayList = async () => {
       <h3 className="mt-6 mb-10 text-2xl dark:bg-secondary bg-primary-foreground drop-shadow-xl rounded-xl p-2 ">
         Transactions
       </h3>
-      {/* <TableDisplay transactions={transactions} error={error} /> */}
+
       <Table>
         <TableHeader>
           <TableRow className="bg-secondary">
@@ -33,7 +34,7 @@ const DisplayList = async () => {
         </TableHeader>
         <TableBody>
           {transactions &&
-            transactions.map((t: any, index: Key | null | undefined) => (
+            transactions.map((t: t, index: Key | null | undefined) => (
               <TableRow key={index}>
                 <TableCell>{t.text}</TableCell>
                 {t.amount > 0 ? (
@@ -45,13 +46,8 @@ const DisplayList = async () => {
                     ${Math.abs(t.amount).toFixed(2)}
                   </TableCell>
                 )}
-                <TableCell
-                  //ref={tableCellRef}
-                  //onClick={() => handleDelete(t.id)}
-                  className="border border-red-500 text-right cursor-pointer ml-14"
-                  //style={{ align = "right" }}
-                >
-                  <BudgetModal {...t.id} />
+                <TableCell className="border border-red-500 text-right cursor-pointer ml-14">
+                  <BudgetModal id={`${t.id}`} />
                 </TableCell>
               </TableRow>
             ))}

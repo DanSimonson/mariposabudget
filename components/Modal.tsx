@@ -9,12 +9,17 @@ import { toast } from "react-toastify";
 const red = { background: "#F44336" };
 const darkRed = { background: "#E53935" };
 
-export function BudgetModal(props: any) {
+type t = {
+  id: string;
+  amount?: number;
+  text?: string;
+};
+
+export function BudgetModal({ id }: t) {
   const [openModal, setOpenModal] = useState(false);
   const [color, setColor] = useState(red);
-  const { id } = props;
 
-  const handleDelete = async (id: string) => {
+  const handleDelete = async () => {
     const { message, error } = await deleteTransaction(id);
     if (error) {
       toast.error(error);
@@ -49,7 +54,7 @@ export function BudgetModal(props: any) {
               Are you sure you want to delete this product?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={() => handleDelete(id)}>
+              <Button color="failure" onClick={() => handleDelete()}>
                 {"Yes, I'm sure"}
               </Button>
               <Button color="gray" onClick={() => setOpenModal(false)}>
