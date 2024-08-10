@@ -15,7 +15,7 @@ export function VortexDemo() {
             Start tracking with Budget Tracker...
           </span>
         </h2>
-        <h1 className="mt-12 font-extrabold text-gray-900 dark:text-white sm:text-3xl md:text-4xl">
+        <h1 className="mt-12 font-extrabold text-neutral-100 sm:text-3xl md:text-4xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-r to-red-600 from-pink-400">
             Sign in and never go{" "}
             <FlipWords words={["broke", "bankrupt", "destitute"]} /> again
