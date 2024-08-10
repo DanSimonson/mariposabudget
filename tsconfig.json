@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/PieChart.jsx"
+    "components/PieChart.jsx",
+    "components/Guest.tsx"
   ],
   "exclude": ["node_modules"]
 }

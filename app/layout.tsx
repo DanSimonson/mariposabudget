@@ -25,7 +25,7 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
           <MainMenu />
-          <main className="flex flex-col items-center justify-center my-8 mx-auto w-full md:w-2/3 px-1">
+          <main className="">
             <Providers>{children}</Providers>
           </main>
           <ToastContainer />

@@ -14,20 +14,12 @@ export default async function Home() {
     return <Guest />;
   }
 
-  // <main className="flex min-h-screen flex-col items-center justify-center ">
-  //   <h1 className="text-pretty font-semibold">Budget Tracker is live</h1>
-  //   <Balance />
-  //   <TrackIncomeExpense />
-  //   <AddTransaction />
-  //   <TransactionList />
-  // </main>;
-
   return (
-    <>
+    <div className="flex flex-col items-center justify-center my-8 mx-auto w-full h-[100vh] md:w-2/3 px-1">
       <Transaction />
       <Balance />
       <TrackIncomeExpense />
       <TransactionList />
-    </>
+    </div>
   );
 }

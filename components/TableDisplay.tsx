@@ -10,6 +10,12 @@ import getTransactions from "@/app/actions/getTransactions";
 import { Key } from "react";
 import { BudgetModal } from "./Modal";
 
+type t = {
+  id: string;
+  amount: number;
+  text: string;
+};
+
 async function TableDisplay() {
   const { transactions, error } = await getTransactions();
 
@@ -28,7 +34,7 @@ async function TableDisplay() {
       </TableHeader>
       <TableBody>
         {transactions &&
-          transactions.map((t: any, index: Key | null | undefined) => (
+          transactions.map((t: t, index: Key | null | undefined) => (
             <TableRow key={index}>
               <TableCell>{t.text}</TableCell>
               {t.amount > 0 ? (
