@@ -6,6 +6,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Providers } from "./providers";
 import MainMenu from "@/components/MainMenu";
+import { Footer } from "@/components/Footer";
 
 import "./globals.css";
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <main className="">
             <Providers>{children}</Providers>
           </main>
+          <Footer />
           <ToastContainer />
         </body>
       </html>
