@@ -9,12 +9,7 @@ import {
 import getTransactions from "@/app/actions/getTransactions";
 import { Key } from "react";
 import { BudgetModal } from "./Modal";
-
-type t = {
-  id: string;
-  amount: number;
-  text: string;
-};
+import { transactionProps } from "@/types/transaction";
 
 async function TableDisplay() {
   const { transactions, error } = await getTransactions();
@@ -34,25 +29,27 @@ async function TableDisplay() {
       </TableHeader>
       <TableBody>
         {transactions &&
-          transactions.map((t: t, index: Key | null | undefined) => (
-            <TableRow key={index}>
-              <TableCell>{t.text}</TableCell>
-              {t.amount > 0 ? (
-                <TableCell className="text-right text-green-500">
-                  ${Math.abs(t.amount).toFixed(2)}
+          transactions.map(
+            (t: transactionProps, index: Key | null | undefined) => (
+              <TableRow key={index}>
+                <TableCell>{t.text}</TableCell>
+                {t.amount > 0 ? (
+                  <TableCell className="text-right text-green-500">
+                    ${Math.abs(t.amount).toFixed(2)}
+                  </TableCell>
+                ) : (
+                  <TableCell className="text-right text-red-500">
+                    ${Math.abs(t.amount).toFixed(2)}
+                  </TableCell>
+                )}
+                <TableCell className="text-right cursor-pointer">
+                  <div className="w-full flex justify-end m-0 p-0">
+                    <BudgetModal {...t} />
+                  </div>
                 </TableCell>
-              ) : (
-                <TableCell className="text-right text-red-500">
-                  ${Math.abs(t.amount).toFixed(2)}
-                </TableCell>
-              )}
-              <TableCell className="text-right cursor-pointer">
-                <div className="w-full flex justify-end m-0 p-0">
-                  <BudgetModal {...t} />
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
+              </TableRow>
+            )
+          )}
       </TableBody>
     </Table>
   );

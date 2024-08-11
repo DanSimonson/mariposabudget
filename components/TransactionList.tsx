@@ -1,4 +1,3 @@
-import getTransactions from "@/app/actions/getTransactions";
 import TableDisplay from "./TableDisplay";
 
 const TransactionList = async () => {

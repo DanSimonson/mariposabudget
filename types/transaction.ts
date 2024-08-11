@@ -6,3 +6,9 @@ export interface Transaction {
   userId?: string;
   createdAt?: Date;
 }
+
+export type transactionProps = {
+  id: string;
+  amount: number;
+  text: string;
+};

@@ -5,17 +5,11 @@ import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import deleteTransaction from "@/app/actions/deleteTransaction";
 import { toast } from "react-toastify";
-
+import { transactionProps } from "@/types/transaction";
 const red = { background: "#F44336" };
 const darkRed = { background: "#E53935" };
 
-type t = {
-  id: string;
-  amount?: number;
-  text?: string;
-};
-
-export function BudgetModal({ id }: t) {
+export function BudgetModal({ id }: transactionProps) {
   const [openModal, setOpenModal] = useState(false);
   const [color, setColor] = useState(red);
 

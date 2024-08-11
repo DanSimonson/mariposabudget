@@ -6,6 +6,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Providers } from "./providers";
 import MainMenu from "@/components/MainMenu";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
