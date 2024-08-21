@@ -9,6 +9,7 @@ import {
 import getTransactions from "@/app/actions/getTransactions";
 import { Key } from "react";
 import { BudgetModal } from "./Modal";
+import { UpdateModal } from "./UpdateModal";
 import { transactionProps } from "@/types/transaction";
 
 async function TableDisplay() {
@@ -24,6 +25,7 @@ async function TableDisplay() {
         <TableRow className="bg-secondary">
           <TableHead>Description</TableHead>
           <TableHead className="text-right">Amount</TableHead>
+          <TableHead className="text-right pr-7">Edit</TableHead>
           <TableHead className="text-right pr-7">Delete</TableHead>
         </TableRow>
       </TableHeader>
@@ -42,7 +44,12 @@ async function TableDisplay() {
                     ${Math.abs(t.amount).toFixed(2)}
                   </TableCell>
                 )}
-                <TableCell className="text-right cursor-pointer">
+                <TableCell className="border border-green-500 w-[100px] text-right cursor-pointer">
+                  <div className="w-full flex justify-end m-0 p-0">
+                    <UpdateModal {...t} />
+                  </div>
+                </TableCell>
+                <TableCell className="border border-green-500 w-[100px] text-right cursor-pointer">
                   <div className="w-full flex justify-end m-0 p-0">
                     <BudgetModal {...t} />
                   </div>
