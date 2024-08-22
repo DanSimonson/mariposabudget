@@ -1,27 +1,48 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { transactionProps } from "@/types/transaction";
 import { toast } from "react-toastify";
 import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
-import { useState } from "react";
+
 import { motion } from "framer-motion";
 
 const red = { background: "#F44336" };
 const darkRed = { background: "#E53935" };
 
-export const UpdateModal = ({ id }: transactionProps) => {
+export const UpdateModal = ({ id, userId, text, amount }: transactionProps) => {
   const [openModal, setOpenModal] = useState(false);
   const [color, setColor] = useState(red);
+  const [textValue, setText] = useState(text);
+  const [amountValue, setAmount] = useState(amount);
+  const [typeValue, setType] = useState("");
 
   function onCloseModal() {
     setOpenModal(false);
   }
+
+  const handleEdit = () => {
+    setOpenModal(true);
+
+    if (amount >= 0) {
+      setType("income");
+    } else if (amount < 0) {
+      setType("expense");
+    }
+  };
+  const handleChange = () => {
+    if (typeValue === "income") {
+      setType("expense");
+    } else {
+      setType("income");
+    }
+  };
+
   return (
     <>
       <Button
         className="bg-primary text-primary-background font-semibold dark:text-white dark:bg-primary"
-        onClick={() => setOpenModal(true)}
+        onClick={handleEdit}
         onMouseEnter={() => setColor(darkRed)}
         onMouseLeave={() => setColor(red)}
         style={color}
@@ -38,8 +59,8 @@ export const UpdateModal = ({ id }: transactionProps) => {
                 id="text"
                 name="text"
                 placeholder="Enter description..."
-                //value={email}
-                //onChange={(event) => setEmail(event.target.value)}
+                value={textValue}
+                onChange={(event) => setText(event.target.value)}
                 required
                 className="border border-black rounded-md py-2 bg-input"
               />
@@ -49,6 +70,8 @@ export const UpdateModal = ({ id }: transactionProps) => {
                 type="number"
                 name="amount"
                 id="amount"
+                value={amountValue}
+                onChange={(event) => setAmount(parseFloat(event.target.value))}
                 placeholder="Enter amount..."
                 step="0.01"
                 required
@@ -60,6 +83,10 @@ export const UpdateModal = ({ id }: transactionProps) => {
               name="type"
               className="border border-black rounded-md py-3 px-2 bg-input"
               required
+              value={typeValue}
+              onChange={(event: React.ChangeEvent<HTMLSelectElement>) =>
+                setType(event.target.value)
+              }
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
