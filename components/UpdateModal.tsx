@@ -36,6 +36,8 @@ export const UpdateModal = ({ id, text, amount }: transactionProps) => {
     try {
       let result = await editTransaction(formData, id);
       toast.success("Transaction Updated");
+      //refresh page
+      window.location.reload;
       setOpenModal(false);
     } catch (error) {
       toast.error("transaction update failed");
