@@ -4,7 +4,7 @@ import prisma from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
-async function deleteTransaction(transactionId: any): Promise<{
+async function deleteTransaction(transactionId: string): Promise<{
   message?: string;
   error?: string;
 }> {
